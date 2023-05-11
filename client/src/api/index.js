@@ -17,3 +17,48 @@ export const validateUser = async(token) => {
         console.log("err " , err)
      }
 }
+
+export const getAllArtist = async () => {
+  try {
+    const res = await api.get(`artists/getAll`);
+    return res.data;
+  } catch (error) {
+    return null;
+  }
+};
+
+export const getAllUsers = async () => {
+  try {
+    const res = await api.get(`users/getUsers`);
+    return res.data;
+  } catch (error) {
+    return null;
+  }
+};
+
+export const removeUser = async (userId) => {
+  try {
+    const res = api.delete(`users/delete/${userId}`);
+    return res;
+  } catch (error) {
+    return null;
+  }
+};
+
+export const getAllSongs = async () => {
+  try {
+    const res = await api.get(`songs/getAll`);
+    return res.data;
+  } catch (error) {
+    return null;
+  }
+};
+
+export const getAllAlbums = async () => {
+  try {
+    const res = await api.get(`albums/getAll`);
+    return res.data;
+  } catch (error) {
+    return null;
+  }
+};

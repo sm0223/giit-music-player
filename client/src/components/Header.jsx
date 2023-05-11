@@ -19,7 +19,7 @@ const Header = () => {
     navigate('/login', {replace:true})
   };
   return (
-      <header className='flex items-center w-full p-4 md:py-2 md:px-6 bg-zinc-900'>
+      <header className='flex items-center w-full p-4 md:py-2 md:px-6 bg-zinc-950'>
         <NavLink to={"/"}>
           <img src ={LOGO} className="w-16"/>
         </NavLink>
@@ -46,28 +46,26 @@ const Header = () => {
               animate={{opacity: 1, y: 0}}
               exit={{opacity: 0, y: 50}}
 
-              className="absolute z-10 top-12 right-0 w-275 p-4 gap-4 bg-card  shadow-lg rounded-lg backdrop-blur-sm flex flex-col"
+              className="absolute z-10 top-12 right-0 w-190 p-4 gap-4 bg-zinc-800 shadow-md rounded-sm  flex flex-col"
           >
             <NavLink to={"/userProfile"}>
-              <p className="text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out">
+              <p className="text-base text-white hover:font-semibold duration-150 transition-all ease-in-out">
                 Profile
               </p>
             </NavLink>
-            <p className="text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out">
+            <p className="text-base text-white hover:font-semibold duration-150 transition-all ease-in-out">
               My Favourites
             </p>
-            <hr/>
             {user?.user?.role === "ADMIN" && (
                 <>
                   <NavLink to={"/dashboard/home"}>
-                    <p className="text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out">
+                    <p className="text-base text-white hover:font-semibold duration-150 transition-all ease-in-out">
                       Dashboard
                     </p>
                   </NavLink>
-                  <hr/>
                 </>
             )}
-            <p className="text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out"
+            <p className="text-base text-white hover:font-semibold duration-150 transition-all ease-in-out"
                onClick={logout}>
               Sign out
             </p>

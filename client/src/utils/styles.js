@@ -1,2 +1,2 @@
-export const  isActiveStyles = "text-lg font-semibold hover:outline-teal-100 duration-100 transition-all ease-in-out"
-export const isNotActiveStyles = "text-lg hover: outline-teal-50 duration-100 transition-all ease-in-out"
+export const  isActiveStyles = "text-lg text-textColor font-semibold hover:outline-teal-100 duration-100 transition-all ease-in-out"
+export const isNotActiveStyles = "text-lg text-textInActive hover:  duration-100 transition-all ease-in-out"
