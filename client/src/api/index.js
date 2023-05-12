@@ -29,7 +29,8 @@ export const getAllArtist = async () => {
 
 export const getAllUsers = async () => {
   try {
-    const res = await api.get(`users/getUsers`);
+    const res = await api.get(`users/getall`);
+    console.log("getAllUsers",res)
     return res.data;
   } catch (error) {
     return null;
@@ -58,6 +59,25 @@ export const getAllAlbums = async () => {
   try {
     const res = await api.get(`albums/getAll`);
     return res.data;
+  } catch (error) {
+    return null;
+  }
+};
+export const changingUserRole = async (userId, role) => {
+  try {
+    const res = api.put(`users/updateRole/${userId}`, {
+      data: { role: role },
+    });
+    return res;
+  } catch (error) {
+    return null;
+  }
+};
+
+export const deleteSongById = async (id) => {
+  try {
+    const res = api.delete(`songs/delete/${id}`);
+    return res;
   } catch (error) {
     return null;
   }

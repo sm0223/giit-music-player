@@ -11,10 +11,10 @@ import DashboardSongs from "./DashboardSongs";
 
 const Dashboard = () => {
   return (
-      <div className='w-full h-auto flex flex-col items-center justify-center bg-zinc-900 '>
+      <div className='w-full h-auto flex flex-col items-center justify-center bg-zinc-950 '>
         <Header />
 
-        <div className="w-[60%] my-2 p-4 flex items-center justify-evenly">
+        <div className="w-full p-4 flex items-center justify-evenly bg-zinc-900">
           {/* prettier-ignore */}
           <NavLink to={"/dashboard/home"}><IoHome className="text-2xl text-white" /></NavLink>
           {/* prettier-ignore */}
@@ -29,8 +29,7 @@ const Dashboard = () => {
           {/* prettier-ignore */}
           <NavLink to={"/dashboard/albums"} className={({ isActive }) => isActive ? isActiveStyles : isNotActiveStyles }> Albums </NavLink>
         </div>
-
-        <div className="my-4 w-full p-4">
+        <div className=" w-full p-4 bg-zinc-900">
           <Routes>
             <Route path="/home" element={<DashboardHome />} />
             <Route path="/user" element={<DashboardUsers />} />

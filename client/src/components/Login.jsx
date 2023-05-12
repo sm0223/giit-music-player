@@ -65,7 +65,7 @@ const Login = ({ setAuth, auth }) => {
           <div className="w-full md:w-375 p-4 bg-lightOverlay shadow-2xl rounded-md backdrop-blur-md flex flex-col items-center justify-center">
             <div
                 onClick={loginWithGoogle}
-                className="flex items-center justify-center  gap-2 px-4 py-2 rounded-md bg-cardOverlay cursor-pointer hover:bg-card hover:shadow-md duration-100 ease-in-out transition-all"
+                className="flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-gray-400 cursor-pointer hover:bg-card hover:shadow-md duration-100 ease-in-out transition-all"
             >
               <FcGoogle className="text-xl" />
               <p>Sign In with Google</p>

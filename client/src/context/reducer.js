@@ -66,7 +66,7 @@ const reducer = (state, action) => {
                 allSongs: action.allSongs,
             };
 
-        case actionType.SET_ALL_ALBUMNS:
+        case actionType.SET_ALL_ALBUMS:
             return {
                 ...state,
                 allAlbums: action.allAlbums,

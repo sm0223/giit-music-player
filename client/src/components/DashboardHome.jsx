@@ -13,7 +13,7 @@ export const DashboardCard = ({ icon, name, count }) => {
   return (
       <div
           // style={{ background: '' }}
-          className={`p-4 w-40 gap-3 h-auto bg-zinc-800 rounded-md shadow-lg flex flex-col items-center justify-center`}
+          className={`p-4 w-40 gap-3 h-auto bg-zinc-900 rounded-md shadow-lg flex flex-col items-center justify-center`}
       >
         {icon}
         <p className="text-xl text-textColor font-semibold">{name}</p>
@@ -29,7 +29,7 @@ const DashBoardHome = () => {
       getAllUsers().then((data) => {
         dispatch({
           type: actionType.SET_ALL_USERS,
-          allUsers: data.data,
+          allUsers: data?.data,
         });
       });
     }
@@ -38,20 +38,21 @@ const DashBoardHome = () => {
       getAllSongs().then((data) => {
         dispatch({
           type: actionType.SET_ALL_SONGS,
-          allSongs: data.data,
+          allSongs: data?.data,
         });
       });
     }
 
     if (!artists) {
       getAllArtist().then((data) => {
-        dispatch({ type: actionType.SET_ARTISTS, artists: data.data });
+        dispatch({ type: actionType.SET_ARTISTS, artists: data?.data });
       });
     }
 
     if (!allAlbums) {
       getAllAlbums().then((data) => {
-        dispatch({ type: actionType.SET_ALL_ALBUMS, allAlbums: data.data });
+        console.log("album data", data.data)
+        dispatch({ type: actionType.SET_ALL_ALBUMS, allAlbums: data?.data });
       });
     }
   }, []);
