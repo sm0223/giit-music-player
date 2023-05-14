@@ -1,0 +1,10 @@
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    volumes:
+      - type: bind
+        source: /home/shux/courses/spe/giit-music-player/db_volume
+        target: /home/shux/courses/spe/giit-music-player/db_volume
