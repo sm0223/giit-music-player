@@ -3,7 +3,7 @@
 # Build react client
 FROM node
 # Working directory be app
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app.
 COPY package*.json ./
 
 ###  Installing dependencies
