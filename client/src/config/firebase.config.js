@@ -17,5 +17,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
-const storage = getStorage(app)
+const storage = getStorage(app,"gs://giit-music-app.appspot.com")
 export {app, storage}

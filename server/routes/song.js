@@ -73,6 +73,7 @@ router.put("/update/:updateId", async (req, res) => {
 });
 
 router.delete("/delete/:deleteId", async (req, res) => {
+  console.log("REQUEST: DELETE")
   const filter = { _id: req.params.deleteId };
 
   const result = await song.deleteOne(filter);

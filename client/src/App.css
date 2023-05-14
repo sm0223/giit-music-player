@@ -1,3 +1,6 @@
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
+.rhap_background-color{
+    background: #333333;
+}

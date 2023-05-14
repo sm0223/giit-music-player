@@ -13,7 +13,7 @@ export const DashboardCard = ({ icon, name, count }) => {
   return (
       <div
           // style={{ background: '' }}
-          className={`p-4 w-40 gap-3 h-auto bg-zinc-900 rounded-md shadow-lg flex flex-col items-center justify-center`}
+          className={`p-4 w-40 gap-3 h-auto bg-zinc-800 rounded-md shadow-lg flex flex-col items-center justify-center`}
       >
         {icon}
         <p className="text-xl text-textColor font-semibold">{name}</p>

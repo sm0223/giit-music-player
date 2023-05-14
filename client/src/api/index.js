@@ -76,8 +76,26 @@ export const changingUserRole = async (userId, role) => {
 
 export const deleteSongById = async (id) => {
   try {
+    console.log('REQUEST DELETE '+id)
     const res = api.delete(`songs/delete/${id}`);
     return res;
+  } catch (error) {
+    return null;
+  }
+};
+export const saveNewSong = async (data) => {
+  try {
+    const res = api.post(`/songs/save`, { ...data });
+    return (await res).data.song;
+  } catch (error) {
+    return null;
+  }
+};
+
+export const saveNewArtist = async (data) => {
+  try {
+    const res = api.post(`artists/save`, { ...data });
+    return (await res).data.artist;
   } catch (error) {
     return null;
   }

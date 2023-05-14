@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { getAllUsers } from "../api";
 import { actionType } from "../context/reducer";
 import { useStateValue } from "../context/StateProvider";
-import DashboardUserCard from "./DashboardUserCard";
+import UserCard from "./UserCard";
 
 const DashboardUsers = () => {
   const [emailFilter, setEmailFilter] = useState("");
@@ -37,13 +37,13 @@ const DashboardUsers = () => {
 
   return (
       <div className="w-full p-4 flex items-center justify-center flex-col">
-        <div className="w-full flex justify-center items-center gap-24">
+        <div className="w-full flex gap-24">
           <input
               type="text"
               placeholder="Search here"
               className={`w-52 px-4 py-2 bg-almostDark ${
-                  isFocus ? "border-gray-300 shadow-md" : "border-gray-300"
-              } rounded-md bg-transparent outline-none duration-150 transition-all ease-in-out text-base text-textColor font-semibold`}
+                  isFocus ? "bg-zinc-950 shadow-lg" : "bg-zinc-800"
+              } rounded-full bg-transparent outline-none duration-150 transition-all ease-in-out text-base text-textColor`}
               value={emailFilter}
               onChange={(e) => setEmailFilter(e.target.value)}
               onBlur={() => setIsFocus(false)}
@@ -60,7 +60,7 @@ const DashboardUsers = () => {
                     setFilterUsers(null);
                   }}
               >
-                <AiOutlineClear className="text-3xl text-textColor cursor-pointer" />
+                <AiOutlineClear className="text-3xl text-gray-400 cursor-pointer" />
               </motion.i>
           )}
         </div>
@@ -82,10 +82,10 @@ const DashboardUsers = () => {
           </div>
           {allUsers && !filterUsers
               ? allUsers?.map((data, i) => (
-                  <DashboardUserCard data={data} key={data._id} index={i} />
+                  <UserCard data={data} key={data._id} index={i} />
               ))
               : filterUsers?.map((data, i) => (
-                  <DashboardUserCard data={data} key={data._id} index={i} />
+                  <UserCard data={data} key={data._id} index={i} />
               ))}
           <div className="absolute bottom-4 right-4">
             <p className="text-xl font-bold">

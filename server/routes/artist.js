@@ -27,7 +27,7 @@ router.get("/getOne/:id", async (req, res) => {
 });
 
 router.post("/save", async (req, res) => {
-  console.log("REQUEST ARTIST SAVE")
+  console.log("REQUEST ARTIST SAVE" + req.body)
   const newArtist = artist({
     name: req.body.name,
     imageUrl: req.body.imageUrl,

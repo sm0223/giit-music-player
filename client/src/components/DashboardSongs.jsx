@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { AiOutlineClear } from "react-icons/ai";
 import { deleteSongById, getAllSongs } from "../api";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
-import { IoAdd, IoPause, IoPlay, IoTrash } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
-import AlertSuccess from "./AlertSuccess";
-import AlertError from "./AlertError";
+import { IoAdd, IoTrash } from "react-icons/io5";
+import {NavLink} from "react-router-dom";
+import AlertSuccess from "./util/AlertSuccess";
+import AlertError from "./util/AlertError";
 
 const DashboardSongs = () => {
   const [songFilter, setSongFilter] = useState("");
@@ -105,7 +105,7 @@ export const SongContainer = ({ data }) => {
 
 export const SongCard = ({ data, index }) => {
   const [isDeleted, setIsDeleted] = useState(false);
-  const [alert, setAlert] = useState(false);
+  const [alert, setAlert] = useState("false");
   const [alertMsg, setAlertMsg] = useState(null);
 
   const [{ allSongs, song, isSongPlaying }, dispatch] = useStateValue();
@@ -128,10 +128,10 @@ export const SongCard = ({ data, index }) => {
   const deleteObject = (id) => {
     console.log(id);
     deleteSongById(id).then((res) => {
-      // console.log(res.data);
+      console.log(res.data);
       if (res.data.success) {
         setAlert("success");
-        setAlertMsg(res.data.msg);
+        setAlertMsg(res.data);
         getAllSongs().then((data) => {
           dispatch({
             type: actionType.SET_ALL_SONGS,
@@ -152,7 +152,7 @@ export const SongCard = ({ data, index }) => {
   };
   return (
       <motion.div
-          whileTap={{ scale: 0.8 }}
+
           initial={{ opacity: 0, translateX: -50 }}
           animate={{ opacity: 1, translateX: 0 }}
           transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -167,7 +167,7 @@ export const SongCard = ({ data, index }) => {
                 className="absolute z-10 p-2 inset-0 bg-card backdrop-blur-md flex flex-col gap-6 items-center justify-center"
             >
               <p className="text-sm text-center text-textColor font-semibold">
-                Are you sure do you want to delete this song?
+                Do you want to delete this song?
               </p>
 
               <div className="flex items-center gap-3">
@@ -189,6 +189,7 @@ export const SongCard = ({ data, index }) => {
 
         <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden">
           <motion.img
+              whileTap={{ scale: 0.8 }}
               whileHover={{ scale: 1.05 }}
               src={data.imageUrl}
               alt=""
@@ -202,15 +203,14 @@ export const SongCard = ({ data, index }) => {
           <span className="block text-sm text-gray-400 my-1">{data.artist}</span>
         </p>
 
-        <div className="w-full absolute bottom-2 right-2 flex items-center justify-between px-4">
-          <motion.i whileTap={{ scale: 0.75 }} onClick={() => setIsDeleted(true)}>
+        <div className="w-full absolute bottom-2 right-2 flex items-center justify-between px-4" onClick={() => setIsDeleted(true)}>
+          <motion.i  whileTap={{ scale: 0.75 }} >
             <IoTrash className="text-base text-red-400 drop-shadow-md hover:text-red-600" />
           </motion.i>
         </div>
-
-        {alert && (
+        {alert!=="false" && (
             <>
-              {alert === "success" ? (
+                {alert==="success" ? (
                   <AlertSuccess msg={alertMsg} />
               ) : (
                   <AlertError msg={alertMsg} />

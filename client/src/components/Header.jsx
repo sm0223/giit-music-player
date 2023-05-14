@@ -23,12 +23,6 @@ const Header = () => {
         <NavLink to={"/"}>
           <img src ={LOGO} className="w-16"/>
         </NavLink>
-        <ul className='flex items-center justify-center ml-7'>
-          <li className='mx-5 text-lg text-white '><NavLink to={'/home'} className = {({isActive})=>isActive?isActiveStyles:isNotActiveStyles}>Home</NavLink></li>
-          <li className='mx-5 text-lg text-white'><NavLink to={'/music'} className = {({isActive})=>isActive?isActiveStyles:isNotActiveStyles}>Music</NavLink></li>
-          <li className='mx-5 text-lg text-white'><NavLink to={'/premium'} className = {({isActive})=>isActive?isActiveStyles:isNotActiveStyles}>Premium</NavLink></li>
-          <li className='mx-5 text-lg text-white'><NavLink to={'/contact'} className = {({isActive})=>isActive?isActiveStyles:isNotActiveStyles}>Contact</NavLink></li>
-        </ul>
         <div
             onMouseEnter={()=>setIsMenu(true)}
             onMouseLeave={()=>setIsMenu(false)}
