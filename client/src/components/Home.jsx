@@ -6,7 +6,6 @@ import {motion} from "framer-motion";
 import {getAllSongs} from "../api";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
-import filter from "./Filter";
 
 const Home = () => {
   const [
