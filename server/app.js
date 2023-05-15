@@ -4,10 +4,28 @@ const express = require('express')
 const cors = require('cors')
 const {default:mongoose} = require("mongoose");
 const app = express();
+const winston = require('winston');
+const expressWinston = require('express-winston');
 
 app.use(cors({origin: true})) // Allow Cross Origin requests
 app.use(express.json()); // Parse API Requests with form data to json data
-
+app.use(expressWinston.logger({
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({
+      filename: 'logs/example.log'
+  })
+  ],
+  format: winston.format.combine(
+    winston.format.colorize(),
+    winston.format.json()
+  ),
+  meta: false,
+  msg: "HTTP  ",
+  expressFormat: true,
+  colorize: false,
+  ignoreRoute: function (req, res) { return false; }
+}));
 //ROUTES
 {
   //Authentication routes
