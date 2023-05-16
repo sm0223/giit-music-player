@@ -1,18 +1,22 @@
-version: '3'
+# Use root/example as user/password credentials
+version: '3.1'
+
 services:
+
   mongodb:
-    image: mongodb/mongodb-community-server:latest
+    image: mongo
+    restart: always
     environment:
-      - MONGODB_INITDB_ROOT_USERNAME=admin
-      - MONGODB_INITDB_ROOT_PASSWORD=pass
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pass
     volumes:
-        source: /home/hardeep/SPE_Major_Project/Giit part2/giit-music-player/db_volume
-        target: /home/hardeep/SPE_Major_Project/Giit part2/giit-music-player/db_volume
+      - type: bind
+        source: /home/hardeep/SPE_Major_Project/part3/giit-music-player/db_volume
+        target: /home/hardeep/SPE_Major_Project/part3/giit-music-player/db_volume
     networks:
       - backend-net
-    network_mode: host
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    ports:
+      - 27017:27017
       
   backend:
     image: hardeep8011/server
