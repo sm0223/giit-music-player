@@ -17,4 +17,4 @@ COPY . .
 # Exports
 EXPOSE 9192
 
-CMD ["npm","run dev"]
+CMD ["npm","run", "dev"]
