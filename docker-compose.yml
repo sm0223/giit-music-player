@@ -1,10 +1,34 @@
+version: '3'
 services:
   mongodb:
     image: mongodb/mongodb-community-server:latest
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=pass
+      - MONGODB_INITDB_ROOT_USERNAME=admin
+      - MONGODB_INITDB_ROOT_PASSWORD=pass
     volumes:
-      - type: bind
-        source: /home/shux/courses/spe/giit-music-player/db_volume
-        target: /home/shux/courses/spe/giit-music-player/db_volume
+        source: /home/hardeep/SPE_Major_Project/Giit part2/giit-music-player/db_volume
+        target: /home/hardeep/SPE_Major_Project/Giit part2/giit-music-player/db_volume
+    networks:
+      - backend-net
+    network_mode: host
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      
+  backend:
+    image: hardeep8011/server
+    ports:
+      - 9192:9192
+    networks:
+      - backend-net
+    depends_on:
+      - mongodb
+
+  frontend:
+    image: hardeep8011/client
+    networks:
+      - backend-net
+    ports:
+      - 3000:3000
+
+networks:
+  backend-net:
