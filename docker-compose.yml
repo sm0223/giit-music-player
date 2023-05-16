@@ -10,6 +10,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: pass
     volumes:
+      - ./insert_user.js:/docker-entrypoint-initdb.d/insert_user.js
       - type: bind
         source: /home/hardeep/SPE_Major_Project/part3/giit-music-player/db_volume
         target: /home/hardeep/SPE_Major_Project/part3/giit-music-player/db_volume
