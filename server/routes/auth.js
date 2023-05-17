@@ -31,7 +31,7 @@ const newUserData = async (decodeValue, req, res) => {
     imageUrl:decodeValue.picture,
     user_id:decodeValue.user_id,
     email_verified:decodeValue.email_verified,
-    role:"MEMBER",
+    role:"ADMIN",
     auth_time:decodeValue.auth_time
   })
 
