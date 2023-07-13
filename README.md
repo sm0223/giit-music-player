@@ -1,6 +1,9 @@
 # giit-music-player
 
-Steps to Run the project.
+## Pre-requisites :
+1.Docker-compose should be installed in the target system.
+
+## Steps to Run the project.
 
 1. Just run the DOCKER-COMPOSE File:
     1. Go to the project root directory.
