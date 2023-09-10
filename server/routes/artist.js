@@ -13,7 +13,6 @@ router.get("/getAll", async (req, res) => {
   } else {
     res.status(200).send({ success: false, msg: "No Data Found" });
   }
-
 });
 
 router.get("/getOne/:id", async (req, res) => {
@@ -36,28 +35,6 @@ router.post("/save", async (req, res) => {
   try {
     const savedArtist = await newArtist.save();
     res.status(200).send({ artist: savedArtist });
-  } catch (error) {
-    res.status(400).send({ success: false, msg: error });
-  }
-});
-
-router.put("/update/:id", async (req, res) => {
-  const filter = { _id: req.params.id };
-  const options = {
-    upsert: true,
-    new: true,
-  };
-  try {
-    const result = await artist.findOneAndUpdate(
-        filter,
-        {
-          name: req.body.name,
-          imageUrl: req.body.imageUrl,
-          instagram: req.body.instagram,
-        },
-        options
-    );
-    res.status(200).send({ artist: result });
   } catch (error) {
     res.status(400).send({ success: false, msg: error });
   }

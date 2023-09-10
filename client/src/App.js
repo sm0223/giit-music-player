@@ -41,6 +41,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    console.log("DISPATCHINGdf")
     if (!allSongs && user) {
       console.log("DISPATCHINGdf")
       getAllSongs().then((data) => {

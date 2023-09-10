@@ -9,18 +9,13 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: pass
-    volumes:
-#       - ./insert_user.js:/docker-entrypoint-initdb.d/insert_user.js
-      - type: bind
-        source: /
-        target: /
     networks:
       - backend-net
     ports:
       - 27017:27017
       
   backend:
-    image: hardeep8011/server
+    image: sm0223/giitserver
     ports:
       - 9192:9192
     networks:
@@ -29,7 +24,7 @@ services:
       - mongodb
 
   frontend:
-    image: hardeep8011/client
+    image: sm0223/giitclient
     networks:
       - backend-net
     ports:

@@ -8,11 +8,8 @@ import {actionType} from "../context/reducer";
 
 
 export const DashboardCard = ({ icon, name, count }) => {
-  // const bg_color = bgColors[parseInt(Math.random() * bgColors.length)];
-
   return (
       <div
-          // style={{ background: '' }}
           className={`p-4 w-40 gap-3 h-auto bg-zinc-800 rounded-md shadow-lg flex flex-col items-center justify-center`}
       >
         {icon}

@@ -107,7 +107,7 @@ const MusicPlayer = () => {
                 whileTap={{ scale: 0.8 }}
                 onClick={() => setIsPlayList(!isPlayList)}
             >
-              <RiPlayListFill className="text-textColor hover:text-headingColor text-3xl cursor-pointer" />
+              {/*<RiPlayListFill className="text-textColor hover:text-headingColor text-3xl cursor-pointer" />*/}
             </motion.i>
           </div>
           <div className="flex-1">

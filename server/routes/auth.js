@@ -63,22 +63,6 @@ const updateUserData = async (decodeValue, req, res) => {
   }
 }
 
-
-router.put("/favourites/:userId", async (req, res) => {
-  const filter = { _id: req.params.userId };
-  const songId = req.query;
-
-  try {
-    console.log(filter, songId);
-    const result = await user.updateOne(filter, {
-      $push: { favourites: songId },
-    });
-    res.status(200).send({ success: true, msg: "Song added to favourites" });
-  } catch (error) {
-    res.status(400).send({ success: false, msg: error });
-  }
-});
-
 router.get("/getall", async (req, res) => {
   const options = {
     // sort returned documents in ascending order
@@ -93,36 +77,6 @@ router.get("/getall", async (req, res) => {
   }
 });
 
-router.get("/getUser/:userId", async (req, res) => {
-  const filter = { _id: req.params.userId };
-
-  const userExists = await user.findOne({ _id: filter });
-  if (!userExists)
-    return res.status(400).send({ success: false, msg: "Invalid User ID" });
-  if (userExists.favourites) {
-    res.status(200).send({ success: true, data: userExists });
-  } else {
-    res.status(200).send({ success: false, data: null });
-  }
-});
-
-router.put("/updateRole/:userId", async (req, res) => {
-  console.log(req.body.data.role, req.params.userId);
-  const filter = { _id: req.params.userId };
-  const role = req.body.data.role;
-
-  const options = {
-    upsert: true,
-    new: true,
-  };
-
-  try {
-    const result = await user.findOneAndUpdate(filter, { role: role }, options);
-    res.status(200).send({ user: result });
-  } catch (err) {
-    res.status(400).send({ success: false, msg: err });
-  }
-});
 
 router.delete("/delete/:userId", async (req, res) => {
   const filter = { _id: req.params.userId };
@@ -135,22 +89,6 @@ router.delete("/delete/:userId", async (req, res) => {
   }
 });
 
-router.put("/removeFavourites/:userId", async (req, res) => {
-  const filter = { _id: req.params.userId };
-  const songId = req.query;
-
-  try {
-    console.log(filter, songId);
-    const result = await user.updateOne(filter, {
-      $pull: { favourites: songId },
-    });
-    res
-        .status(200)
-        .send({ success: true, msg: "Song removed from favourites" });
-  } catch (error) {
-    res.status(400).send({ success: false, msg: error });
-  }
-});
 
 
 module.exports = router;

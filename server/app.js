@@ -31,13 +31,10 @@ app.use(expressWinston.logger({
   //Authentication routes
   const userRoute = require("./routes/auth")
   app.use("/api/users", userRoute)
-  //Artist routes
+  //Artist routes -forwaded all requests to /routes/artist.js
   const artistRoute = require("./routes/artist")
   app.use("/api/artists/", artistRoute)
-  //Album routes
-  const albumRoute = require("./routes/album")
-  app.use("/api/albums", albumRoute)
-  //Songs routes
+  //Songs routes-forwaded all requests to /routes/song.js
   const songRoute = require("./routes/song")
   app.use("/api/songs", songRoute)
 

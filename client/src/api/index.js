@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create(
     {
-        baseURL : 'http://localhost:9192/api/'
+        baseURL : 'http://34.207.246.88:9192/api/'
     }
 );
 export const validateUser = async(token) => {
